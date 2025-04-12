@@ -25,5 +25,7 @@ AAlyseCharacter::AAlyseCharacter()
 		
 	ViewCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("View Camera"));
 	ViewCamera->SetupAttachment(SpringArm);
+
+	GetCharacterMovement()->SetJumpAllowed(true);
 	
 }

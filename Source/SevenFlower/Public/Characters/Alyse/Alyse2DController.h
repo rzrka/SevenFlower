@@ -6,7 +6,12 @@
 #include "GameFramework/PlayerController.h"
 #include "Alyse2DController.generated.h"
 
+
+
 struct FInputActionValue;
+
+
+class IlightingInterface;
 /**
  * 
  */
@@ -17,7 +22,7 @@ class SEVENFLOWER_API AAlyse2DController : public APlayerController
 
 public:
 	AAlyse2DController();
-
+	virtual void PlayerTick(float DeltaTime) override;
 	
 protected:
 	virtual void BeginPlay() override;
@@ -31,4 +36,8 @@ private:
 	TObjectPtr<class UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+	IlightingInterface* LastActor;
+	IlightingInterface* ThisActor;
 };

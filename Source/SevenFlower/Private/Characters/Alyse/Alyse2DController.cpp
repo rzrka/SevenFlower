@@ -5,10 +5,17 @@
 
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Interaction/lightingInterface.h"
 
 AAlyse2DController::AAlyse2DController()
 {
 	bReplicates = true;
+}
+
+void AAlyse2DController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
 }
 
 void AAlyse2DController::BeginPlay()
@@ -50,5 +57,38 @@ void AAlyse2DController::Move(const FInputActionValue& InputActionValue)
 	{
 		ControlledPawn->AddMovementInput(ForwardDirection, InputAxisVector.Y);
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
+	}
+}
+
+void AAlyse2DController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	if (!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<IlightingInterface>(CursorHit.GetActor());
+
+
+	if (LastActor == nullptr and ThisActor == nullptr)
+	{
+		return; 
+	}
+	else if (LastActor == nullptr and ThisActor != nullptr)
+	{
+		ThisActor->HighlightActor();
+	}
+	else if (LastActor != nullptr and ThisActor == nullptr)
+	{
+		LastActor->UnHighlightActor();
+	}
+	else if (LastActor != nullptr and ThisActor != nullptr and LastActor != ThisActor)
+	{
+		LastActor->UnHighlightActor();
+		ThisActor->HighlightActor();
+	}
+	else if (LastActor != nullptr and ThisActor != nullptr and LastActor == ThisActor)
+	{
+		return;
 	}
 }

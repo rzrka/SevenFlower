@@ -16,6 +16,12 @@ class SEVENFLOWER_API AAlyseCharacter : public ABaseCharacter
 
 public:
 	AAlyseCharacter();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool isCrouching = false;
+	
+	const float WalkSpeed = 300.f;
+	const float RunSpeed = 600.f;
 	// virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 private:
