@@ -5,5 +5,5 @@
 
 AAlysePlayerState::AAlysePlayerState()
 {
-	NetUpdateFrequency = 100.f;
+	SetNetUpdateFrequency(100.f);
 }
