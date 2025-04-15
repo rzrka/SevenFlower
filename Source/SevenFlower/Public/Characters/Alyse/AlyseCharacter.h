@@ -16,15 +16,17 @@ class SEVENFLOWER_API AAlyseCharacter : public ABaseCharacter
 
 public:
 	AAlyseCharacter();
-
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool isCrouching = false;
 	
 	const float WalkSpeed = 300.f;
 	const float RunSpeed = 600.f;
-	// virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 private:
+	void InitAbilityActorInfo();
+	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class USpringArmComponent> SpringArm;
 

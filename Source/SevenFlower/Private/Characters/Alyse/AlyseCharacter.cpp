@@ -2,7 +2,10 @@
 
 
 #include "Characters/Alyse/AlyseCharacter.h"
+
+#include "AbilitySystemComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Characters/Alyse/AlysePlayerState.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -28,4 +31,29 @@ AAlyseCharacter::AAlyseCharacter()
 
 	GetCharacterMovement()->SetJumpAllowed(true);
 	
+}
+
+void AAlyseCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	// Init ability actor info for the server
+	InitAbilityActorInfo();
+}	
+
+void AAlyseCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// Init ability actor info for the Client
+	InitAbilityActorInfo();
+}
+
+void AAlyseCharacter::InitAbilityActorInfo()
+{
+	AAlysePlayerState* AlysePlayerState = GetPlayerState<AAlysePlayerState>();
+	check(AlysePlayerState);
+	AlysePlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AlysePlayerState, this);
+	AbilitySystemComponent = AlysePlayerState->GetAbilitySystemComponent();
+	AttributeSet = AlysePlayerState->GetAttributeSet();
 }

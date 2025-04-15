@@ -7,6 +7,12 @@
 #include "Characters/AbilitySystem/BaseAttributeSet.h"
 #include "SevenFlower/SevenFlower.h"
 
+void AEnemyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+
 AEnemyCharacter::AEnemyCharacter()
 {
 	// Highlight
@@ -16,9 +22,11 @@ AEnemyCharacter::AEnemyCharacter()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UBaseAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
-	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>("AttibuteSet");
+	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>("AttributeSet");
 }
+
 
 void AEnemyCharacter::HighlightActor()
 {

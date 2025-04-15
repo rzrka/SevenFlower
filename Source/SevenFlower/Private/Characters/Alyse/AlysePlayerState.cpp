@@ -3,7 +3,4 @@
 
 #include "Characters/Alyse/AlysePlayerState.h"
 
-AAlysePlayerState::AAlysePlayerState()
-{
-	SetNetUpdateFrequency(100.f);
-}
+#include "AbilitySystemComponent.h"

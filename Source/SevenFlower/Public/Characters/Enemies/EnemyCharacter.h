@@ -15,8 +15,11 @@ class SEVENFLOWER_API AEnemyCharacter : public ABaseCharacter, public IlightingI
 {
 	GENERATED_BODY()
 public:
+	virtual void BeginPlay() override;
 	AEnemyCharacter();
+	
+	/** Enemy Interface */
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
-	
+	/** end Enemy Interface */
 };
