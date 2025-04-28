@@ -3,8 +3,8 @@
 
 #include "Characters/Enemies/EnemyCharacter.h"
 
-#include "Characters/AbilitySystem/BaseAbilitySystemComponent.h"
-#include "Characters/AbilitySystem/BaseAttributeSet.h"
+#include "Characters/AbilitySystem/SFAbilitySystemComponent.h"
+#include "Characters/AbilitySystem/SFAttributeSet.h"
 #include "SevenFlower/SevenFlower.h"
 
 void AEnemyCharacter::BeginPlay()
@@ -20,11 +20,11 @@ AEnemyCharacter::AEnemyCharacter()
 	Weapon->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 
-	AbilitySystemComponent = CreateDefaultSubobject<UBaseAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent = CreateDefaultSubobject<USFAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
-	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>("AttributeSet");
+	AttributeSet = CreateDefaultSubobject<USFAttributeSet>("AttributeSet");
 }
 
 

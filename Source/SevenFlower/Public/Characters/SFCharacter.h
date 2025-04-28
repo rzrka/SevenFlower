@@ -5,19 +5,19 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
-#include "BaseCharacter.generated.h"
+#include "SFCharacter.generated.h"
 
 
 class UAbilitySystemComponent;
 class UAttributeSet;
 
 UCLASS(Abstract)
-class SEVENFLOWER_API ABaseCharacter : public ACharacter, public IAbilitySystemInterface
+class SEVENFLOWER_API ASFCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
 public:	
-	ABaseCharacter();
+	ASFCharacter();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const {return AttributeSet;}
 	

@@ -3,19 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Characters/BaseCharacter.h"
+#include "Characters/SFCharacter.h"
 #include "AlyseCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SEVENFLOWER_API AAlyseCharacter : public ABaseCharacter
+class SEVENFLOWER_API AAlyseCharacter : public ASFCharacter
 {
 	GENERATED_BODY()
 
 public:
 	AAlyseCharacter();
+	virtual void BeginPlay() override;
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

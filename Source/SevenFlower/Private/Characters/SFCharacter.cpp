@@ -1,10 +1,10 @@
 // Copyright QueueBitGames
 
 
-#include "Characters/BaseCharacter.h"
+#include "Characters/SFCharacter.h"
 
 
-ABaseCharacter::ABaseCharacter()
+ASFCharacter::ASFCharacter()
 {	
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -13,13 +13,13 @@ ABaseCharacter::ABaseCharacter()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
-UAbilitySystemComponent* ABaseCharacter::GetAbilitySystemComponent() const
+UAbilitySystemComponent* ASFCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
 
 
-void ABaseCharacter::BeginPlay()
+void ASFCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	

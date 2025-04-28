@@ -33,11 +33,16 @@ AAlyseCharacter::AAlyseCharacter()
 	
 }
 
+void AAlyseCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void AAlyseCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
-
-	// Init ability actor info for the server
+	
+	// Init ability actor info for the Server
 	InitAbilityActorInfo();
 }	
 
@@ -57,3 +62,4 @@ void AAlyseCharacter::InitAbilityActorInfo()
 	AbilitySystemComponent = AlysePlayerState->GetAbilitySystemComponent();
 	AttributeSet = AlysePlayerState->GetAttributeSet();
 }
+ 

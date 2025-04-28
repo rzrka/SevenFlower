@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
-#include "BaseAbilitySystemComponent.generated.h"
+#include "SFAbilitySystemComponent.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SEVENFLOWER_API UBaseAbilitySystemComponent : public UAbilitySystemComponent
+class SEVENFLOWER_API USFAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
 	
