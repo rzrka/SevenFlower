@@ -1,7 +1,7 @@
 // Copyright QueueBitGames
 
 
-#include "Actor/SFEffectActor.h"
+#include "Characters/Actor/SFEffectActor.h"
 
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemInterface.h"
