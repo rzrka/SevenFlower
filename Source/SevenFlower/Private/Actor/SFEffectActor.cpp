@@ -27,9 +27,9 @@ void ASFEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 	// TODO: Change this to apply a Gameplay Effect. For now, using const_cast as a hack!
 	if (IAbilitySystemInterface* ASCInterface = Cast<IAbilitySystemInterface>(OtherActor))
 	{
-		const USFAttributeSet* BaseAttributeSet = Cast<USFAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(USFAttributeSet::StaticClass()));
-		USFAttributeSet* MutableBaseAttributeSet = const_cast<USFAttributeSet*>(BaseAttributeSet);
-		MutableBaseAttributeSet->SetHealth(BaseAttributeSet->GetHealth() + 25.f);
+		const USFAttributeSet* SFAttributeSet = Cast<USFAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(USFAttributeSet::StaticClass()));
+		USFAttributeSet* MutableBaseAttributeSet = const_cast<USFAttributeSet*>(SFAttributeSet);
+		MutableBaseAttributeSet->SetHealth(SFAttributeSet->GetHealth() + 25.f);
 		Destroy();
 	}
 }
