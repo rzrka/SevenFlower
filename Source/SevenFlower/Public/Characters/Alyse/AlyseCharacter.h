@@ -26,7 +26,7 @@ public:
 	const float RunSpeed = 600.f;
 
 private:
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class USpringArmComponent> SpringArm;

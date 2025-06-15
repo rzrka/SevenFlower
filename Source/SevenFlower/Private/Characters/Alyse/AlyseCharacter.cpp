@@ -5,6 +5,7 @@
 
 #include "AbilitySystemComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Characters/AbilitySystem/SFAbilitySystemComponent.h"
 #include "Characters/Alyse/AlyseController.h"
 #include "Characters/Alyse/AlysePlayerState.h"
 #include "Components/CapsuleComponent.h"
@@ -61,7 +62,9 @@ void AAlyseCharacter::InitAbilityActorInfo()
 	AAlysePlayerState* AlysePlayerState = GetPlayerState<AAlysePlayerState>();
 	check(AlysePlayerState);
 	AlysePlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AlysePlayerState, this);
+	
 	AbilitySystemComponent = AlysePlayerState->GetAbilitySystemComponent();
+	Cast<USFAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 	AttributeSet = AlysePlayerState->GetAttributeSet();
 
 	if (AAlyseController* AlyseController = Cast<AAlyseController>(GetController()))

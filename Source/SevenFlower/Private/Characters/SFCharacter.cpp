@@ -24,3 +24,7 @@ void ASFCharacter::BeginPlay()
 	Super::BeginPlay();
 	
 }
+
+void ASFCharacter::InitAbilityActorInfo()
+{
+}

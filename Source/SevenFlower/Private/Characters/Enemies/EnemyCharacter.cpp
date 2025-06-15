@@ -10,7 +10,13 @@
 void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	InitAbilityActorInfo();
+}
+
+void AEnemyCharacter::InitAbilityActorInfo()
+{
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	Cast<USFAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 }
 
 AEnemyCharacter::AEnemyCharacter()
