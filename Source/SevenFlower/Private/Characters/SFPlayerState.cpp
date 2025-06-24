@@ -9,7 +9,7 @@
 
 ASFPlayerState::ASFPlayerState()
 {
-	AbilitySystemComponent  = CreateDefaultSubobject<USFAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent = CreateDefaultSubobject<USFAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
