@@ -26,7 +26,7 @@ void ASFEffectActor::BeginPlay()
 
 void ASFEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
-	// Todo задебажить, понять как получается систма интерфейса способностьей от цели
+	// Todo задебажить, понять как получается система интерфейса способностьей от цели
 	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 	if (TargetASC == nullptr) return;
 
