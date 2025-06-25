@@ -74,5 +74,7 @@ void AAlyseCharacter::InitAbilityActorInfo()
 			SFHUD->InitOverlay(AlyseController, AlysePlayerState, AbilitySystemComponent, AttributeSet);
 		}
 	}
+	InitializePrimaryAttributes();
+
 }
  
