@@ -19,6 +19,12 @@ public:
 	virtual void BeginPlay() override;
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+
+
+	/** Combat Inerface */
+	virtual int32 GetPlayerLevel() override;
+	/** end Combat Inerface */
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool isCrouching = false;
 	

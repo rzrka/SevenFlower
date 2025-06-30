@@ -5,6 +5,7 @@
 
 #include "Characters/AbilitySystem/SFAbilitySystemComponent.h"
 #include "Characters/AbilitySystem/SFAttributeSet.h"
+#include "Net/UnrealNetwork.h"
 
 
 AAlysePlayerState::AAlysePlayerState()
@@ -18,8 +19,19 @@ AAlysePlayerState::AAlysePlayerState()
 	SetNetUpdateFrequency(100.f);
 }
 
+void AAlysePlayerState:: GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AAlysePlayerState, Level);
+}
+
 UAbilitySystemComponent* AAlysePlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+void AAlysePlayerState::OnRep_Level(int32 OldLevel)
+{
 }
 

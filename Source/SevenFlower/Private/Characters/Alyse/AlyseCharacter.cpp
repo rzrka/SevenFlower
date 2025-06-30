@@ -57,6 +57,13 @@ void AAlyseCharacter::OnRep_PlayerState()
 	InitAbilityActorInfo();
 }
 
+int32 AAlyseCharacter::GetPlayerLevel()
+{
+	const AAlysePlayerState* AlysePlayerState = GetPlayerState<AAlysePlayerState>();
+	check(AlysePlayerState);
+	return AlysePlayerState->GetPlayerLevel();
+}
+
 void AAlyseCharacter::InitAbilityActorInfo()
 {
 	AAlysePlayerState* AlysePlayerState = GetPlayerState<AAlysePlayerState>();
@@ -74,7 +81,7 @@ void AAlyseCharacter::InitAbilityActorInfo()
 			SFHUD->InitOverlay(AlyseController, AlysePlayerState, AbilitySystemComponent, AttributeSet);
 		}
 	}
-	InitializePrimaryAttributes();
+	InitializeDefaultAttributes();
 
 }
  

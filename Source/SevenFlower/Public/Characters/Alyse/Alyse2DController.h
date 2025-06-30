@@ -38,6 +38,6 @@ private:
 	void Move(const FInputActionValue& InputActionValue);
 
 	void CursorTrace();
-	TObjectPtr<IlightingInterface> LastActor;
-	TObjectPtr<IlightingInterface> ThisActor;
+	IlightingInterface* LastActor;
+	IlightingInterface* ThisActor;
 };
