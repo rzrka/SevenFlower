@@ -1,21 +1,21 @@
 // Copyright QueueBitGames
 
 
-#include "Characters/AbilitySystem/MMC/MMC_MaxHealth.h"
+#include "Characters/AbilitySystem/MMC/MMC_MaxMana.h"
 
 #include "Characters/AbilitySystem/SFAttributeSet.h"
 #include "Interaction/CombatInterface.h"
 
-UMMC_MaxHealth::UMMC_MaxHealth()
+UMMC_MaxMana::UMMC_MaxMana()
 {
-	VigorDef.AttributeToCapture = USFAttributeSet::GetVigorAttribute();
-	VigorDef.AttributeSource = EGameplayEffectAttributeCaptureSource::Target;
-	VigorDef.bSnapshot = false;
+	IntelligenceDef.AttributeToCapture = USFAttributeSet::GetIntelligenceAttribute();
+	IntelligenceDef.AttributeSource = EGameplayEffectAttributeCaptureSource::Target;
+	IntelligenceDef.bSnapshot = false;
 
-	RelevantAttributesToCapture.Add(VigorDef);
+	RelevantAttributesToCapture.Add(IntelligenceDef);
 }
 
-float UMMC_MaxHealth::CalculateBaseMagnitude_Implementation(const FGameplayEffectSpec& Spec) const
+float UMMC_MaxMana::CalculateBaseMagnitude_Implementation(const FGameplayEffectSpec& Spec) const
 {
 	// Gather tags from source and target
 	const FGameplayTagContainer* SourceTags = Spec.CapturedSourceTags.GetAggregatedTags();
@@ -25,12 +25,13 @@ float UMMC_MaxHealth::CalculateBaseMagnitude_Implementation(const FGameplayEffec
 	EvaluationParameters.SourceTags = SourceTags;
 	EvaluationParameters.TargetTags = TargetTags;
 
-	float Vigor = 0.f;
-	GetCapturedAttributeMagnitude(VigorDef, Spec, EvaluationParameters, Vigor);
-	Vigor = FMath::Max<float>(Vigor, 0.f);
+	float Int = 0.f;
+	
+	GetCapturedAttributeMagnitude(IntelligenceDef, Spec, EvaluationParameters, Int);
+	Int = FMath::Max<float>(Int, 0.f);
 
 	ICombatInterface* CombatInterface = Cast<ICombatInterface>(Spec.GetContext().GetSourceObject());
 	const int32 PlayerLevel = CombatInterface->GetPlayerLevel();
 
-	return 80.f + 2.5f * Vigor + 10.f * PlayerLevel;
+	return 50.f + 2.5f * Int + 15.f * PlayerLevel;
 }
