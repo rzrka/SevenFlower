@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SFController.h"
 #include "GameFramework/PlayerController.h"
 #include "Alyse2DController.generated.h"
 
@@ -16,7 +17,7 @@ class IlightingInterface;
  * 
  */
 UCLASS()
-class SEVENFLOWER_API AAlyse2DController : public APlayerController
+class SEVENFLOWER_API AAlyse2DController : public ASFController
 {
 	GENERATED_BODY()
 

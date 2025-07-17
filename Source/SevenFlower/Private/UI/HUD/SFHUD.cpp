@@ -4,6 +4,7 @@
 #include "UI/HUD/SFHUD.h"
 
 #include "UI/WidgetControllers/OverlayWidgetController.h"
+#include "UI/WidgetControllers/AttributeMenuWidgetController.h"
 #include "UI/Widgets/SFUserWidget.h"
 
 
@@ -16,6 +17,17 @@ UOverlayWidgetController* ASFHUD::GetOrCreateOverlayWidgetController(const FWidg
 	OverlayWidgetController->BindCallbacksToDependencies();
 	
 	return OverlayWidgetController;
+}
+
+UAttributeMenuWidgetController* ASFHUD::GetOrCreateAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (AttributeMenuWidgetController) return AttributeMenuWidgetController;
+
+	AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+	AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+	AttributeMenuWidgetController->BindCallbacksToDependencies();
+
+	return AttributeMenuWidgetController;
 }
 
 void ASFHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)

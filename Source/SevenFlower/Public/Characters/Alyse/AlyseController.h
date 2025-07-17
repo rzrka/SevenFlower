@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SFController.h"
 #include "GameFramework/PlayerController.h"
 #include "AlyseController.generated.h"
 
@@ -12,7 +13,7 @@ struct FInputActionValue;
  * 
  */
 UCLASS()
-class SEVENFLOWER_API AAlyseController : public APlayerController
+class SEVENFLOWER_API AAlyseController : public ASFController
 {
 	GENERATED_BODY()
 public:

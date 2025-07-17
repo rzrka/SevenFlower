@@ -74,7 +74,7 @@ void AAlyseCharacter::InitAbilityActorInfo()
 	Cast<USFAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 	AttributeSet = AlysePlayerState->GetAttributeSet();
 
-	if (AAlyseController* AlyseController = Cast<AAlyseController>(GetController()))
+	if (ASFController* AlyseController = Cast<ASFController>(GetController()))
 	{
 		if (ASFHUD* SFHUD = Cast<ASFHUD>(AlyseController->GetHUD()))
 		{
