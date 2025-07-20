@@ -5,12 +5,9 @@
 
 FSFAttributeInfo UAttributeInfo::FindAttributeInfoForTag(const FGameplayTag& AttributeTag, bool bLogNotFound) const
 {
-	for (const FSFAttributeInfo& Info : AttributeInformation)
+	if (const FSFAttributeInfo* Info = AttributeInformation.Find(AttributeTag))
 	{
-		if (Info.AttributeTag.MatchesTagExact(AttributeTag))
-		{
-			return Info;
-		}
+		return *Info;
 	}
 
 	if (bLogNotFound)

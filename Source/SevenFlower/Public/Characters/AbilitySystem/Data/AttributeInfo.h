@@ -37,8 +37,7 @@ class SEVENFLOWER_API UAttributeInfo : public UDataAsset
 public:
 
 	FSFAttributeInfo FindAttributeInfoForTag(const FGameplayTag& AttributeTag, bool bLogNotFound = false) const;
-
-	// TODO переделать через hashmap
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TArray<FSFAttributeInfo> AttributeInformation;
+	TMap<FGameplayTag, FSFAttributeInfo> AttributeInformation;
 };

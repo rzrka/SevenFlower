@@ -24,9 +24,9 @@ class SEVENFLOWER_API ASFHUD : public AHUD
 	GENERATED_BODY()
 
 public:
-
-	// TODO сделать через фабрику ну или хотябы через одну функцию
-	USFWidgetController* GetOrCreateWidgetController(const FWidgetControllerParams& WCParams);
+	
+	template<typename T>
+	T* GetOrCreateWidgetController(const FWidgetControllerParams& WCParams, TObjectPtr<T>& WidgetController, TSubclassOf<T> WidgetControllerClass);
 	UOverlayWidgetController* GetOrCreateOverlayWidgetController(const FWidgetControllerParams& WCParams);
 	UAttributeMenuWidgetController* GetOrCreateAttributeMenuWidgetController(const FWidgetControllerParams& WCParams);
 

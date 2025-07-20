@@ -8,12 +8,23 @@
 #include "GameFramework/Character.h"
 #include "GameplayEffectTypes.h"
 #include "Net/UnrealNetwork.h"
+#include "SFGameplayTags.h"
 
 
 USFAttributeSet::USFAttributeSet()
 {
-	InitHealth(10.f);
-	InitMana(50.f);
+
+	const FSFGameplayTags& GameplayTags = FSFGameplayTags::Get();
+	
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Resilience, GetResilienceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Vigor, GetVigorAttribute);
+	
+	// TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+
+	
+	
 }
 
 void USFAttributeSet::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

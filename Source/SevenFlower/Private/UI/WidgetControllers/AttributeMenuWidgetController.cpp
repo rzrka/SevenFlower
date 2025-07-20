@@ -13,9 +13,14 @@ void UAttributeMenuWidgetController::BroadcastInitialValues()
 
 	check(AttributeInfo);
 
-	FSFAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(FSFGameplayTags::Get().Attributes_Primary_Strength);
-	Info.AttributeValue = AS->GetStrength();
-	AttributeInfoDelegate.Broadcast(Info);
+	for (auto& Pair : AS->TagsToAttributes)
+	{
+		FSFAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(Pair.Key);
+		FGameplayAttribute Attr = Pair.Value();
+		Info.AttributeValue = Attr.GetNumericValue(AS);
+		AttributeInfoDelegate.Broadcast(Info);
+	}
+	
 }
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()

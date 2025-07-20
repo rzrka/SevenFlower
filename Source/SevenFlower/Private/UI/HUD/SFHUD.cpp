@@ -8,26 +8,26 @@
 #include "UI/Widgets/SFUserWidget.h"
 
 
+template<typename T>
+T* ASFHUD::GetOrCreateWidgetController(const FWidgetControllerParams& WCParams, TObjectPtr<T>& WidgetController, TSubclassOf<T> WidgetControllerClass)
+{
+	if (WidgetController) return WidgetController;
+
+	WidgetController = NewObject<T>(this, WidgetControllerClass);
+	WidgetController->SetWidgetControllerParams(WCParams);
+	WidgetController->BindCallbacksToDependencies();
+
+	return WidgetController;
+}
+
 UOverlayWidgetController* ASFHUD::GetOrCreateOverlayWidgetController(const FWidgetControllerParams& WCParams)
 {
-	if (OverlayWidgetController) return OverlayWidgetController;
-
-	OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
-	OverlayWidgetController->SetWidgetControllerParams(WCParams);
-	OverlayWidgetController->BindCallbacksToDependencies();
-	
-	return OverlayWidgetController;
+	return GetOrCreateWidgetController(WCParams, OverlayWidgetController, OverlayWidgetControllerClass);
 }
 
 UAttributeMenuWidgetController* ASFHUD::GetOrCreateAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
 {
-	if (AttributeMenuWidgetController) return AttributeMenuWidgetController;
-
-	AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
-	AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
-	AttributeMenuWidgetController->BindCallbacksToDependencies();
-
-	return AttributeMenuWidgetController;
+	return GetOrCreateWidgetController(WCParams, AttributeMenuWidgetController, AttributeMenuWidgetControllerClass);
 }
 
 void ASFHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
